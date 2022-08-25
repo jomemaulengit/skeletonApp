@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController, NavController } from '@ionic/angular';
+import { Utils } from 'src/utils/utils';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
-
+  constructor(
+    private navController: NavController, 
+    private router: Router,
+    private utils: Utils,
+    private alertController: AlertController,
+  ) { }
   ngOnInit() {
   }
-  onClick(e){
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Alto',
+      message: 'Uno de los datos que me diste esta malito!',
+      buttons: ['lo intentare otra vez'],
+    });
+
+    await alert.present();
+  }
+  async goHome(form){
+    const email = form.form.value['email'];
+    const password = form.form.value['password'];
+    const isValidData = this.utils.validateLogin(email, password);
+
+    if(isValidData){
+      this.router.navigateByUrl(`/home`);
+      return
+    }
+    await this.presentAlert();
   }
 }

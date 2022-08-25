@@ -2,18 +2,23 @@
   <ion-title style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">skeleton APP</ion-title>
 </ion-toolbar>
 <br/>
+<br/>
 <ion-content>
   <ion-card>
     <ion-card-header>
-    <ion-card-title style="font-size: 50px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: center;">Login</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
+    <ion-card-title style="font-size: 50px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-align: center;">Bienvenido</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form #form="ngForm" (ngSubmit)="goHome(form)">
       <ion-label position="floating">Correo</ion-label>
-      <ion-textarea maxlength="40" inputmode="email" debounce="ngModel" placeholder="aqui va tu correo ej: jhondoe@example.com"></ion-textarea>
-
+      <ion-input name="email" ngModel maxlength="40" type="email" debounce="ngModel" placeholder="aqui va tu correo ej: jhondoe@example.com"></ion-input>
+      
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input maxlength="8" type="password"  placeholder="tu clave secreta"></ion-input>
+      <ion-input name="password" ngModel maxlength="8" type="password"  placeholder="tu clave secreta"></ion-input>
       <hr/>
-    </ion-card-content>
+      <br/>
+      <ion-button type="submit" expand="block">Login</ion-button>
+    </form>
+  </ion-card-content>
   </ion-card>
 </ion-content>
