@@ -20,6 +20,7 @@ export class Utils {
     if(searchObject.password != password){
         return false
     }
+    window.localStorage.setItem('user',JSON.stringify(searchObject));
     return true;
   }
 }

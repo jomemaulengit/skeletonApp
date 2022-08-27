@@ -1,6 +1,6 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController, NavController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { Utils } from 'src/utils/utils';
 
 @Component({
@@ -9,12 +9,10 @@ import { Utils } from 'src/utils/utils';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  constructor(
-    private navController: NavController, 
-    private router: Router,
+  constructor( 
     private utils: Utils,
     private alertController: AlertController,
+    private router: Router
   ) { }
   ngOnInit() {
   }
